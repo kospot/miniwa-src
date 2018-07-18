@@ -12,7 +12,7 @@ A brand new default theme for [Hexo].
 $ git clone https://github.com/hexojs/hexo-theme-landscape.git themes/landscape
 ```
 
-**Landscape requires Hexo 2.4 and above.** If you would like to enable the RSS, the [hexo-generate-feed] plugin is also required.
+**Landscape requires Hexo 2.4 and above.**
 
 ### Enable
 
@@ -71,11 +71,6 @@ google_plus:
 
 Landscape uses [Fancybox] to showcase your photos. You can use Markdown syntax or fancybox tag plugin to add your photos.
 
-```
-![img caption](img url)
-
-{% fancybox img_url [img_thumbnail] [img_caption] %}
-```
 
 ### Sidebar
 
@@ -105,8 +100,7 @@ All of them are enabled by default. You can edit them in `widget` setting.
 - **fancybox** - Only download [Fancybox].
 - **clean** - Clean temporarily files and downloaded files.
 
-[Hexo]: https://hexo.io/
+[Hexo]: http://zespia.tw/hexo/
 [Fancybox]: http://fancyapps.com/fancybox/
 [Font Awesome]: http://fontawesome.io/
 [Grunt]: http://gruntjs.com/
-[hexo-generate-feed]: https://github.com/hexojs/hexo-generator-feed

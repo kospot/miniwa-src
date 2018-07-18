@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>pie Demo</title>
+    <script src="./graphics.min.js"></script>
+</head>
+<body>
+    <div id="container" style="width: 100%; height: 100%"></div>
+    <script>
+    var stage = acgraph.create('container');
+    var bigCircle = stage.circle(180, 180, 180);//最外面的大圆
+
+    bigCircle.fill('#ddd').stroke('#ddd');
+
+    stage.path()
+        //为了实现圆角用弧线变宽最为进度
+        //circularArc参数为圆心位置，椭圆的x、y半径，看是位置的角度（3点是0度），弧长的圆心角
+        .circularArc(180, 180, 160, 160, -90, 90)
+        .stroke({
+            color: '#129090',       //颜色
+            thickness: 40,          //宽度
+            lineCap: "ROUND"        //圆角
+        })
+
+
+    var smallCircle = stage.circle(180, 180, 140);//里面的小圆
+    smallCircle.fill('#fff').stroke('#ddd');
+    </script>
+</body>
+</html>

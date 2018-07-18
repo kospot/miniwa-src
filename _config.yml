@@ -3,29 +3,30 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
+avatar: /avatar/logo.png
+title: Miniwa
+subtitle: 'this is a test'
 description:
-keywords:
-author: John Doe
+author: miniwa
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://miniwa.com.cn
 root: /
-permalink: blog/:year/:month/:day/:title/
-tag_dir: blog/tags
-archive_dir: blog
-category_dir: blog/categories
+permalink: :year/:month/:day/:title/
+permalink_defaults:
 
 # Directory
 source_dir: source
 public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: apps/**
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -34,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -72,9 +73,54 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: materialize
+theme: archer
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+-   type: git
+    repository: git@github.com:kospot/miniwa.git
+    branch: gh-pages
+-   type: baidu_url_submitter ## 这是新加的
+
+## archer config
+jsonContent:
+  meta: true
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: true
+    excerpt: false
+    categories: true
+    tags: true
+
+
+# hexo-filter-plugin (https://github.com/Jamling/hexo-filter-highlight) config 
+## highlight in frontend, the plugin (backend) just do some prepare work.
+## you need to read the docs on https://github.com/Jamling/hexo-filter-highlight to getting start
+hljs:
+  enable: true #true to enable the plugin
+  line_number: frontend # add line_number in frontend or backend
+  trim_indent: backend # trim the indent of code block to prettify output. backend or front-end (recommend)
+  copy_code: true # show copy code in caption.
+  label:
+    left: Code
+    right: ':'
+    copy: Copy Code
+
+
+baidu_url_submit:
+  count: 1 ## 提交最新的一个链接
+  host: miniwa.com.cn ## 在百度站长平台中注册的域名
+  token: LC2jgIPr2mlCGjTY ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
