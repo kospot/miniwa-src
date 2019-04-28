@@ -180,7 +180,7 @@
 }( typeof global !== "undefined" ? global : this ) );
 </script>
 
-    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="icon" href= "/assets/site.ico" />
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />    
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
     <link rel="preload" href="/scripts/main.js" as="script" />
@@ -213,9 +213,10 @@
             </div>
     </div>
     
+    <img class="logo" src= /avatar/logo.png >
     <a class="home-link" href=/>首页</a>
     
-        <a class="home-link" href = "/about" style="right:6rem;">关于我们</a>
+        <a class="home-link" href = "/about" style="right:10rem;">关于我们</a>
     
 </header>
     <div class="wrapper">
@@ -396,7 +397,7 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>最近在公司办理了人才引入，递交了资料，然后就等待公示；公示的名单会在改网页中展示<a href="http://www.hrssgz.gov.cn/vsgzpiapp01/GZPI/Gateway/PersonIntroducePublicity.aspx，点进去查看一番" target="_blank" rel="external">http://www.hrssgz.gov.cn/vsgzpiapp01/GZPI/Gateway/PersonIntroducePublicity.aspx，点进去查看一番</a><br>觉得坑爹的是每页只显示几条，而且还有60页之多，这简直是反人类。于是便想着把所有的数据搞下来！</p>
-<p><img src="/2017/09/10/2017-09-10-get-data/step1.png" alt=""></p>
+<p><img src="/2017/09/10/2017-09-10-get-data/step1.png" alt></p>
 <p>第一步肯定是F12看看请求的格式了，又翻页看了一下请求，大致了解了流程：</p>
 <ul>
 <li>每次请求会拿到<strong>VIEWSTATEGENERATOR、</strong>VIEWSTATE等着些后端的code值</li>
@@ -406,11 +407,11 @@ height:50vh;
 <li>采用post的方式请求</li>
 </ul>
 <p>http请求体</p>
-<p><img src="/2017/09/10/2017-09-10-get-data/./step2.png" alt=""></p>
+<p><img src="/2017/09/10/2017-09-10-get-data/./step2.png" alt></p>
 <p>页面跳转处理</p>
-<p><img src="/2017/09/10/2017-09-10-get-data/./step3.png" alt=""></p>
+<p><img src="/2017/09/10/2017-09-10-get-data/./step3.png" alt></p>
 <p>跳转执行函数</p>
-<p><img src="/2017/09/10/2017-09-10-get-data/./step4.png" alt=""></p>
+<p><img src="/2017/09/10/2017-09-10-get-data/./step4.png" alt></p>
 <p>第二步模拟请求，获取返回的html，截取数据拿到第一页的表格，存储起来，并拿第二页的请求参数</p>
 <p>这里借助了两个npm的包request、cheerio</p>
 <ul>
@@ -420,7 +421,7 @@ height:50vh;
 <p>具体实现如下，会把结果写入到当前的一个data.html文件里：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;),</span><br><span class="line">    request = require(&apos;request&apos;),</span><br><span class="line">    cheerio = require(&apos;cheerio&apos;)</span><br><span class="line"></span><br><span class="line">// 缓存的结果</span><br><span class="line">var result = &apos;&apos;</span><br><span class="line"></span><br><span class="line">function write(str)&#123;</span><br><span class="line">    fs.writeFile(&apos;./data.html&apos;, str, function (err) &#123;</span><br><span class="line">        if (err) throw err;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 为了好看一点，包装一下</span><br><span class="line">function wrapHtml(str) &#123;</span><br><span class="line">    var header = &apos;&lt;tr class=&quot;ListHeader&quot; align=&quot;center&quot;&gt; &lt;td&gt;姓名&lt;/td&gt;&lt;td&gt;单位名称&lt;/td&gt;&lt;td&gt;批复结果&lt;/td&gt;&lt;td&gt;审批单位&lt;/td&gt;&lt;td&gt;公示开始时间&lt;/td&gt;&lt;td&gt;公示结束时间&lt;/td&gt; &lt;/tr&gt;&apos;</span><br><span class="line">    str = &apos;&lt;table&gt;&apos; + header + str +&apos;&lt;/table&gt;&apos;</span><br><span class="line">    return &apos;&lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;最新名单&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &apos;+str+&apos;&lt;/body &gt; &lt;/html&gt;&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function query(data)&#123;</span><br><span class="line">    request.post(&#123;</span><br><span class="line">        url: &apos;http://www.hrssgz.gov.cn/vsgzpiapp01/GZPI/Gateway/PersonIntroducePublicity.aspx&apos;,</span><br><span class="line">        formData: data</span><br><span class="line">    &#125;, function (error, response, body) &#123;</span><br><span class="line">        var startIndex = body.indexOf(&apos;&lt;tr class=&quot;ListItem&quot;&gt;&apos;)</span><br><span class="line">        var endIndex = body.indexOf(&apos;&lt;/table&gt;&apos;)</span><br><span class="line">        result += body.slice(startIndex, endIndex)</span><br><span class="line">        var formData = getFormData(body)</span><br><span class="line">		//如果formdata没值标示没有下一页了，也就可以结束了</span><br><span class="line">        if(formData)&#123;</span><br><span class="line">            query(formData)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            write(wrapHtml(result))</span><br><span class="line">            console.log(&apos;读取完成&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//在body中获取下一页的参数</span><br><span class="line">function getFormData (body) &#123;</span><br><span class="line">    const $ = cheerio.load(body)</span><br><span class="line">    if($(&apos;#NextLBtn&apos;).attr(&apos;disabled&apos;) == &apos;disabled&apos;)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    var total = $(&apos;#PageCount&apos;).text()</span><br><span class="line">    var cur = $(&apos;#ToPage&apos;).val()</span><br><span class="line">    console.log(&apos;继续读取第&apos;+Number(+cur + 1)+&apos;页，&apos; + &apos;共&apos;+total+&apos;页&apos;);</span><br><span class="line">    return &#123;</span><br><span class="line">        __EVENTTARGET: &apos;NextLBtn&apos;,</span><br><span class="line">        __VIEWSTATE: $(&apos;#__VIEWSTATE&apos;).val(),</span><br><span class="line">        __VIEWSTATEGENERATOR: $(&apos;#__VIEWSTATEGENERATOR&apos;).val(),</span><br><span class="line">        ToPage: cur</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//开始拿第一页的数据</span><br><span class="line">query()</span><br></pre></td></tr></table></figure>
 <p>下面是执行的结果</p>
-<p><img src="/2017/09/10/2017-09-10-get-data/./step5.png" alt=""></p>
+<p><img src="/2017/09/10/2017-09-10-get-data/./step5.png" alt></p>
 <p>总的来说流程还是比较简单的，拿到表格之后也可以随意搜索名字了。node确实是给前端带来了很大的改变，让前端可以从浏览器走出去，可以任意的操作计算机系统的资源，而目前更是广泛应用到静态服务器、SSR、资源打包优化、桌面应用等。<br>可以说Web2.0让js死而复生，node让js脱胎换骨。js如火如荼也很大程度上得益于当今项目开源的浪潮，前不久更是看到了一些开源的神经网络js库，相信不久的将来，在AI、VR等新技术领域js也定能分得一杯羹。</p>
 <p>其实作为IT人士，一直觉得我们不应该太过局限于工作，与技能结合起来，让能力更好地改变我们的生活，结合生活我们才能有所创造。铁饭碗不是来源于组织的强大稳健，而是产品与技术创新。</p>
 
@@ -459,15 +460,6 @@ height:50vh;
     
     
     <!--PC版-->
-
-    <div id="SOHUCS" sid= /2017/09/10/2017-09-10-get-data/></div>
-    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
-    <script type="text/javascript">
-        window.changyan.api.config({
-            appid: "cytE4b9xr",
-            conf: "cb022bdaf248a775f853ace4d1d7f233"
-        });
-    </script>
 
     <!--PC版-->
 
@@ -529,15 +521,6 @@ height:50vh;
     <div class="copyright">
         <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
     </div>
-    <!-- 不蒜子  -->
-    
-    <div class="busuanzi-container">
-    
-     
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-    
-    </div>
-    
 </footer>
 
     </div>
@@ -571,6 +554,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -833,12 +818,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2016/04/10/2016-04-10-react-resume/" >reactjs总结</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2016/04/10/2015-12-05-css-center/" >css居中显示</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2016/04/10/2015-12-05-css-center/" >css居中显示</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2016/04/10/2016-04-10-react-resume/" >reactjs总结</a>
         </li>
     
     
