@@ -1,0 +1,24 @@
+<% if(is_home()) { %>
+<header class="header index-header">
+<% } else { %>
+<header class="header">
+<% } %>
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    <% if (is_post()) { %>
+    <div class="banner">
+            <div class="blog-title">
+                <a href="<%- url_for() %>" ><%= theme.main_title || config.title%></a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name"><%- page.title %></a>
+            </div>
+    </div>
+    <% } %>
+    <img class="logo" src= <%- url_for(theme.avatar) %> >
+    <a class="home-link" href=<%- config.root %>><%- theme.main_title || config.title %></a>
+    <% if(theme.about.enable) { %>
+        <a class="home-link" href = "<%- url_for("/about") %>" style="right:10rem;">关于我们</a>
+    <% } %>
+</header>
