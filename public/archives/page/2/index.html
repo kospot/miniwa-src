@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html>
+    <!-- title -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="miniwa">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="miniwa">
+    <meta name="keywords" content="Miniwa | miniwa">
+    <meta name="description" content>
+    <meta name="Cache-Control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Miniwa</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+         height: 60vh;
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s 1;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180524" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180524" media="(max-width: 980px)">
+        
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/site.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+    <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+</head>
+
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <img class="logo" src="/avatar/logo.png">
+    <a class="home-link" href="/">首页</a>
+    
+        <a class="home-link" href="/about" style="right:10rem;">关于我们</a>
+    
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style>
+    
+    <!-- 主页  -->
+            
+    <div class="site-intro-placeholder"></div>
+
+    
+    <div class="site-intro-img" style="background-image: url(/)"></div>
+         
+
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+    </div>
+</div>
+        <script>
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+  
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2016/06/08/2016-06-08-javascript-template/">
+                
+                    <span>javascript模板</span>
+            </a>
+            <div class="abstract-content">
+                最早使用的js模板是这样子的
+123456String.prototype.template = function(e, t) &#123;  return this.replace(t || /\$&#123;([^&#123;&#125;]*)&#125;/g, function(t, r) &#123;      return e[r] !== undefined &amp;&amp; e[r] !== null  &amp;&amp; e[r].toString() || &quot;&quot;    &#125;  )&#125;
+主要是通过正则来匹配，替换数据，不足之处是不...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/06/08</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2016/04/10/2016-04-10-react-resume/">
+                
+                    <span>reactjs总结</span>
+            </a>
+            <div class="abstract-content">
+                在项目中使用了reactjs框架，其对组件更加彻底，编写起来也更加方便。对外暴露的接口、api也不多。在这里想总结一下：
+ReactElement：拥有四个属性type，props，key，ref，不携带方法，原型上什么都没有
+ReactNode：可以是ReactElement、string、number、ReactNode实例数组（ReactFragment）
+ReactComponent：组件，一个简单的js类，构造函数
+
+React.unmountComponentAtNode只可以移除有React.render方法渲染的组件，而对其内部的子组件无效，会返回false
+React....
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/04/10</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2016/04/10/2016-04-12-node-npm/">
+                
+                    <span>node模块加载</span>
+            </a>
+            <div class="abstract-content">
+                node的模块分为核心模块和文件模块，核心模块是node提供的内置模块，在node源码编译过程中，编译进了二进制执行文件，部分模块在node进程启动时就已经加载进内存中；而文件模块则是运行时动态加载。正如浏览器的缓存一样，node会对引入过的模块进行缓存，以减少二次引入的开销；不同的是node会缓存模块的结果对象而不只是文件。模块的加载包括三个步骤：
+
+路径分析
+文件定位
+编译执行
+
+路径分析node的require方法接受一个标识符作参数，实现模块加载，而该标识符主要有以下几类：
+
+核心模块，如http、fs、path等
+.或者..开头的相对路径文件模块
+以/开始的绝对路径文件模块
+非...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/04/10</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2016/04/10/2015-12-05-css-center/">
+                
+                    <span>css居中显示</span>
+            </a>
+            <div class="abstract-content">
+                在页面中居中可以分为水平居中和垂直居中。对水平居中常用的是margin: 0 auto，浏览器会自动计算左右的margin，那同时要实现垂直居中呢？可以如下：12345678.absolute-center &#123;  margin: auto;  position: absolute;  overflow: auto;  top: 0; left: 0; bottom: 0; right: 0;  width: 50%;  height: 50%;&#125;
+这种做法可以兼容ie8-ie10，但是必须要有宽高。
+除此之外，也可以通过left和top设置为50%，再加上margin...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/04/10</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2015/11/06/2015-11-6-reback-js/">
+                
+                    <span>js的垃圾回收机制</span>
+            </a>
+            <div class="abstract-content">
+                简介js无法管理内存单元，内存的分配和回收都是自动进行的。但是自动并不意味着可以不用管。如果自动分配的内存，因为使用问题而无法释放，这就会造成内存泄露了。要了解js的垃圾回收，先得清楚内存的生命周期。不管什么语言，内存生命周期基本一致：分配所需空间 –&gt; 读写分配的内存空间 –&gt; 不需要的时候将其释放\归还 。那垃圾回收则是跟第三步相关。那回收的关键就落在如何判断“不需要”了。全局变量不会被回收，局部变量才可以回收。
+要想完全将无用的内存释放掉，显然是无法通过某种算法做到的，垃圾回收只能近似地把无用的内存回收。而这种近似地算法有：引用计数和标记-清除。
+引用垃圾回收算法主要依...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/11/06</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2015/10/10/2015-10-10-backbone/">
+                
+                    <span>Backbone总结</span>
+            </a>
+            <div class="abstract-content">
+                为什么选择Backbone项目之初，需要选择一个框架作为底层开发，当时想到的是angular、backbone、vue，其都是MV*的开发方式。而我考虑的几点是
+
+学习成本低，可以快速上手
+框架的利用率和总体体积
+框架的更新周期
+框架的讨论热度兼顾这几方面，选择了Backbone。Backbone的视图功能是比较单一和广泛的，可以随意使用，没有太多的条条框框。但是不足的是Collection和Model的功能跟View不匹配，View对于Collection和Model而言显得有点功能单薄。
+
+BackboneBackbone的视图创建很简单，只是创建了几个公共的方法和提供一些事件监听和...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/10/10</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2015/09/20/2015-09-25-shadow-dom/">
+                
+                    <span>影子(shadow)DOM</span>
+            </a>
+            <div class="abstract-content">
+                shadow dom是一种把类的概念迁移到html上的实践，主要是解决一个文档中可能需要大量交互的多个dom树的建立以及其各自的功能边界问题。目前只有少量浏览器支持，下面一起来了解webkit中的shadow dom。
+在代码编写过程中，我们常常会定义一个组件，把只关乎自身的东西内聚。例如：react的自定义组件、或者其他MV*框架中的组件。但这其实只是逻辑上的独立，再HTML中，它并没有独立开来，所有的节点也都是交由最顶级的HTML管理。对DOM树的遍历或者样式的选择，都会当来潜在的弊端。如果我们可以实现DOM树的封装和独立，使不同的DOM树之间可以相互独立，又可以独自渲染；那势必会使...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/09/20</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2015/09/20/2015-09-20-seajs-source/">
+                
+                    <span>浅析模块化和seajs</span>
+            </a>
+            <div class="abstract-content">
+                模块化带来的问题前端交互的复杂和更新的频繁，对程序的可维护性和健壮性提出了更大的要求。基于本地文件的后端模块化，给了前端模块化很大的启示。模块化开发给维护和开发带来了很大的好处，每个功能按模块区分，不同功能通过接口沟通，各司其职，各行其道。那么模块化就要求一个功能一个模块，但是js语言本并没有模块化的功能，也无法声明模块的依赖，而且一个模块一个请求，这在分秒必争的浏览器显然是一个逆发展。总的来说，模块化需要解决以下问题：
+
+模块的声明定义和接口的导出
+模块的依赖机制
+资源的优化整合
+
+解决了以上问题，才能让模块化成为可能。
+如何模块化模块的声明定义和接口的导出
+js语言里本身不具备模块的...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/09/20</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href="/2015/09/12/2015-09-12-js-base-extend/">
+                
+                    <span>javascript的继承</span>
+            </a>
+            <div class="abstract-content">
+                继承的基础Brendan Eich在设计js语言时，面向对象编程正值兴盛之期，而定位为简易脚本语言的js需不需要兼顾面向对象的功能呢？Brendan Eich的答案是肯定的。但是js里面，函数、Object、Array等一切都是对象，也没有Class的类概念。那得用什么机制让对象联系起来呢？Brendan Eich想到了构造函数，通过new直接接一个构造函数来生成一个实例，也就是把类的概念和function糅合在一起，但是简单的构造函数与类的区别是无法共享属性和方法，function内部的都是实例new出来的对象特有的属性或方法。考虑到这一点，Brendan Eich给每个函数添加了pr...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/09/12</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:851428272@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/kospot" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">目录</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">标签</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">分类</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 19 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href="/2018/04/11/2018-04-11-git-study/">Git基础知识总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href="/2018/03/02/2018-02-19-chongsheng/">二月冲绳之旅</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href="/2018/02/14/2018-02-14-egg-validate/">egg整合数据校验</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href="/2017/09/10/2017-09-10-get-data/">记一次node捉取表格数据的实践</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span><a class="archive-post-title" href="/2017/09/09/2017-09-09-about-es6/">关于ES6的这些你知道吗</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span><a class="archive-post-title" href="/2017/09/01/2017-09-01-vuex-base/">vuex知识总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href="/2017/08/20/2017-08-20-xiamen/">追忆厦门鼓浪屿</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2017/08/19/2017-08-05-yangshuoyouji/">我和小艺的广州阳朔两日闲游</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/18</span><a class="archive-post-title" href="/2017/08/18/2017-08-18-vue-router/">vue-router的使用</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href="/2017/02/16/2016-06-08-pie/">环形统计图</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2016/06/08/2016-06-08-javascript-template/">javascript模板</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href="/2016/04/10/2016-04-10-react-resume/">reactjs总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href="/2016/04/10/2015-12-05-css-center/">css居中显示</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href="/2016/04/10/2016-04-12-node-npm/">node模块加载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2015 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href="/2015/11/06/2015-11-6-reback-js/">js的垃圾回收机制</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href="/2015/10/10/2015-10-10-backbone/">Backbone总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/20</span><a class="archive-post-title" href="/2015/09/20/2015-09-20-seajs-source/">浅析模块化和seajs</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/20</span><a class="archive-post-title" href="/2015/09/20/2015-09-25-shadow-dom/">影子(shadow)DOM</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href="/2015/09/12/2015-09-12-js-base-extend/">javascript的继承</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="eggjs"><span class="iconfont-archer">&#xe606;</span>eggjs</span>
+    
+        <span class="sidebar-tag-name" data-tags="node"><span class="iconfont-archer">&#xe606;</span>node</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="js原理"><span class="iconfont-archer">&#xe60a;</span>js原理</span>
+    
+        <span class="sidebar-category-name" data-categories="基础知识"><span class="iconfont-archer">&#xe60a;</span>基础知识</span>
+    
+        <span class="sidebar-category-name" data-categories="CSS样式"><span class="iconfont-archer">&#xe60a;</span>CSS样式</span>
+    
+        <span class="sidebar-category-name" data-categories="闲暇游记"><span class="iconfont-archer">&#xe60a;</span>闲暇游记</span>
+    
+        <span class="sidebar-category-name" data-categories="实战应用"><span class="iconfont-archer">&#xe60a;</span>实战应用</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: '/',
+        author: 'miniwa'
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    <div style="display: none">
+        <script src="https://s13.cnzz.com/z_stat.php?id=1272955788&web_id=1272955788" language="JavaScript"></script>
+        
+    </div>
+    <!-- async load share.js -->
+    
+    </body>
+</html>
+
+
